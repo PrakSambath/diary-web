@@ -2,23 +2,41 @@
 const KEY = 'entries';
 
 export function createEntry(title, content, date){
-  console.log('create entry');
-  // let data = readEntries();
-  // data = data.concat([{"id":999, title, content, date}]);
-  // localStorage.setItem(KEY, JSON.stringify(data));
+  const data = readEntries();
+  // generate random id
+  // random number from 0 to 1
+  let id = Math.random() * 10000;
+  // remove the floating point path
+  id = id.toString().slice(0, 5);
+  // save data in the browser storage
+  data.push({id, title, content, date});
+  localStorage.setItem(KEY, JSON.stringify(data));
 }
 
 export function readEntries(){
-  console.log('read entries')
-  // load saved data from local storage
-  // const strData = localStorage.getItem(KEY);
-  // return JSON.parse(strData);
+  // load data from browser storage
+  const strData = localStorage.getItem(KEY);
+  // convert string to json
+  const objData = JSON.parse(strData);
+  return objData != null? objData: [];
 }
 
 export function updateEntry(id, newTitle, newContent, newDate){
-  console.log('update entry', id);
+  let data = readEntries();
+  data.forEach(element => {
+    if(element.id == id){
+      element.title = newTitle;
+      element.content = newContent;
+      element.date = newDate;
+    }
+  });
+  // save data in the browser storage
+  localStorage.setItem(KEY, JSON.stringify(data));
 }
 
 export function deleteEntry(id){
-  console.log('delete entry', id);
+  let data = readEntries();
+  data = data.filter((elem) => elem.id != id);
+  localStorage.setItem(KEY, JSON.stringify(data));
 }
+
