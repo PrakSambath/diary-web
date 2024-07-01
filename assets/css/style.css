@@ -1,0 +1,152 @@
+/* desktop: 6 columns*/
+@media screen and (min-width:1200px) {
+  .form-container {
+    grid-column: 4 / span 6;
+  }
+}
+
+/* tablet: 6 columns*/
+@media screen and (max-width:1199px) {
+  .form-container {
+    grid-column: 2 / span 6;
+  }
+}
+
+
+/* mobile: 4 columns*/
+@media screen and (max-width:743px) {
+  .form-container {
+    grid-column: 1 / span 4;
+  }
+}
+
+/* Form style */
+.form-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 300ms linear;
+}
+
+.form-container.visible {
+  grid-template-rows: 1fr;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0px 16px;
+}
+
+.form-container.visible form {
+  padding-bottom: 16px;
+}
+
+form .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+form .title {
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 56px;
+  width: 100%;
+}    
+
+form .content {
+  font-size: 14px;
+  min-height: 112px;
+  width: 100%;
+}
+
+
+form .date {
+  font-size: 14px;
+  width: fit-content;
+}
+
+form .cta-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+  
+.show-form {
+  width: 40px;
+  height: 40px;
+  margin: 16px 0px;
+}
+
+.entry-header {
+  font-size: 16px;
+  text-align: center;
+  color: #3E4F5D;
+  border-bottom: 1px solid #C6D0D9;
+}
+
+entry-container {
+  display: block;
+  margin-top: 16px;
+}
+
+.card {
+  grid-column: span 4;
+  height: fit-content;
+}
+
+.card .text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card .title {
+  color: #3E4F5D;
+  font-size: 16px;
+  overflow-wrap: break-word;
+  line-height: 24px;
+  margin: 0;
+}
+
+.card .content {
+  color: #3E4F5D;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  line-height: 24px;
+  margin: 0;
+}
+
+.card textarea.content {
+  min-height: 112px;
+}
+
+.card .date, .card input.date {
+  color: #7B8288;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.card .cta-link {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}
+
+.placeholder {
+  font-size: 14px;
+  color: #7B8288;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+

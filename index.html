@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/grid.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/components/components.css">
+  <script type="module" src="./assets/components/components.js"></script>
   <title>Diary Application</title>
 </head>
 <body>
-  <script type="module" src="./assets/js/form.js"></script>
-
-  <script type="module" src="./assets/js/script.js"></script>
+  <cus-header></cus-header>
+  <input-form></input-form>
+  <main>
+    <div class="container">
+      <div class="entry-header">
+        List
+      </div>
+      <entry-container></entry-container>
+    </div>
+  </main>
+  <cus-footer></cus-footer>
 
 </body>
 </html>
