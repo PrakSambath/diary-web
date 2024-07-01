@@ -14,7 +14,7 @@ export default class EntryContainer extends HTMLElement {
         entryContainer.setAttribute('class', 'grid');
         if(data.length != 0){
           data.forEach(elem => {
-            const entry = new Entry(elem.id, elem.title, elem.content, elem.date);
+            const entry = new Entry(elem.id, elem.title, elem.content, elem.date, elem.themeColor);
             entryContainer.appendChild(entry);
           });
         }else{

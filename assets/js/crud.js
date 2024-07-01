@@ -1,7 +1,7 @@
 // data name
 const KEY = 'entries';
 
-export function createEntry(title, content, date){
+export function createEntry(title, content, date, color){
   const data = readEntries();
   // generate random id
   // random number from 0 to 1
@@ -9,7 +9,7 @@ export function createEntry(title, content, date){
   // remove the floating point path
   id = id.toString().slice(0, 5);
   // save data in the browser storage
-  data.push({id, title, content, date});
+  data.push({id, title, content, date, color});
   localStorage.setItem(KEY, JSON.stringify(data));
 }
 
@@ -21,13 +21,14 @@ export function readEntries(){
   return objData != null? objData: [];
 }
 
-export function updateEntry(id, newTitle, newContent, newDate){
+export function updateEntry(id, newTitle, newContent, newDate, newColor){
   let data = readEntries();
   data.forEach(element => {
     if(element.id == id){
       element.title = newTitle;
       element.content = newContent;
       element.date = newDate;
+      element.themeColor = newColor;
     }
   });
   // save data in the browser storage

@@ -5,12 +5,13 @@ import { updateEntry, deleteEntry } from "./crud.js";
 
 export default class Entry{
 
-  constructor(id, title, content, date) {
+  constructor(id, title, content, date, themeColor) {
     
     const ANIMATE_DURATION = 300; // 200ms
     // card container
     const wrapper = document.createElement('div');
     wrapper.setAttribute('class', 'card secondary');
+    wrapper.style.backgroundColor = themeColor;
 
     // view layout
     const viewElem = document.createElement('div');
@@ -86,7 +87,7 @@ export default class Entry{
           editElem.style.display = 'none';
           viewElem.style.display = 'block';
           wrapper.style.transform = '';
-          this.onUpdate(id, newTitle, newContent, newDate);
+          this.onUpdate(id, newTitle, newContent, newDate, themeColor);
         },ANIMATE_DURATION);
       }
     });
@@ -108,8 +109,8 @@ export default class Entry{
     return wrapper;
   }
 
-  onUpdate(id, title, content, date){
-    updateEntry(id, title, content, date);
+  onUpdate(id, title, content, date, color){
+    updateEntry(id, title, content, date, color);
     // reload browser to update view
     location.reload(true);
   }
