@@ -7,8 +7,6 @@ export default class Form extends HTMLElement {
     super();
 
     const addBtn = new Button('+', 'button', 'show-form btn-primary');
-    const container = document.createElement('div');
-    container.setAttribute('class', 'container');
     const wrapper = document.createElement('div');
     wrapper.setAttribute('class', 'grid');
     const formContainer = document.createElement('div');
@@ -43,8 +41,7 @@ export default class Form extends HTMLElement {
     form.append(inputWrapper, ctaWrapper);
     formContainer.append(form);
     wrapper.append(addBtn, formContainer);
-    container.append(wrapper);
-    this.append(container);
+    this.append(wrapper);
 
   }
 
