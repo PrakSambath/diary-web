@@ -1,3 +1,28 @@
+body {
+  background-color: #CAF4FF;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: #F6DC5A;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 5px #7B8288;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.app-name {
+  font-size: 1.25rem;
+}
+
+main {
+  padding: 64px 0px;
+}
+
 /* desktop: 6 columns*/
 @media screen and (min-width:1200px) {
   .form-container {
@@ -52,21 +77,23 @@ form .input-wrapper {
 }
 
 form .title {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   min-height: 56px;
   width: 100%;
 }    
 
 form .content {
-  font-size: 14px;
+  font-size: 1rem;
+  font-weight: normal;
   min-height: 112px;
   width: 100%;
 }
 
 
 form .date {
-  font-size: 14px;
+  font-size: 1rem;
+  font-weight: normal;
   width: fit-content;
 }
 
@@ -84,7 +111,7 @@ form .cta-wrapper {
 }
 
 .entry-header {
-  font-size: 16px;
+  font-size: 2rem;
   text-align: center;
   color: #3E4F5D;
   border-bottom: 1px solid #C6D0D9;
@@ -108,7 +135,8 @@ entry-container {
 
 .card .title {
   color: #3E4F5D;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: bold;
   overflow-wrap: break-word;
   line-height: 24px;
   margin: 0;
@@ -116,7 +144,8 @@ entry-container {
 
 .card .content {
   color: #3E4F5D;
-  font-size: 14px;
+  font-size: 1rem;
+  font-weight: normal;
   overflow-wrap: break-word;
   line-height: 24px;
   margin: 0;
@@ -128,7 +157,8 @@ entry-container {
 
 .card .date, .card input.date {
   color: #7B8288;
-  font-size: 14px;
+  font-size: 1rem;
+  font-weight: normal;
   width: fit-content;
 }
 
@@ -136,6 +166,7 @@ entry-container {
   display: flex;
   justify-content: end;
   gap: 8px;
+  margin-top: 16px;
 }
 
 .placeholder {
@@ -145,8 +176,21 @@ entry-container {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-
-
+footer {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #F6DC5A;
+  box-shadow: 0px 0px 5px #7B8288;
+}
+.footer-credit {
+  font-size: 1rem;
+}
+.app-credit {
+  font-size: 1rem;
+}

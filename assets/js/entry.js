@@ -1,19 +1,22 @@
 import Button from "../components/button.js";
+import Input from "../components/input.js";
+import Textarea from "../components/textarea.js";
 import { updateEntry, deleteEntry } from "./crud.js";
 
 export default class Entry{
 
   constructor(id, title, content, date) {
     
+    const ANIMATE_DURATION = 300; // 200ms
     // card container
     const wrapper = document.createElement('div');
-    wrapper.setAttribute('class', 'card');
+    wrapper.setAttribute('class', 'card secondary');
 
     // view layout
     const viewElem = document.createElement('div');
     viewElem.setAttribute('id', 'view');
     viewElem.innerHTML =`
-    <div id="view">
+      <div class="wrapper">
       <div class="text-content">
         <h2 class="title">${title}</h2>
         <p class="content">${content}</p>
@@ -22,10 +25,11 @@ export default class Entry{
         </div>
       </div>
       <div class="cta-link">
-        <button id="edit-btn" type="button" class="btn-primary">Edit</button>
-        <button id="delete-btn" type="button" class="btn-primary">Delete</button>
+        <button id="edit-btn" type="button" class="btn-secondary">Edit</button>
+        <button id="delete-btn" type="button" class="btn-secondary">Delete</button>
       </div>
-    </div>`;
+      </div>
+      `;
 
     // edit button
     viewElem.querySelector('#edit-btn').addEventListener('click', () => {
@@ -33,46 +37,58 @@ export default class Entry{
       setTimeout(() => {
         viewElem.style.display = 'none';
         editElem.style.display = 'block';
-        wrapper.style.transform = 'rotateY(0deg)';
-      },500);
+        wrapper.style.transform = '';
+      },ANIMATE_DURATION);
     });
     // delete button
     viewElem.querySelector('#delete-btn').addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
         this.onDelete(id)
-      },500);
+      },ANIMATE_DURATION);
     });
 
     // edit layout
-    const editElem = document.createElement('div');
+    const editElem = document.createElement('form');
     editElem.setAttribute('id', 'edit');
+    const inputTitle = new Input('text', 'title', 'title');
+    inputTitle.value = title;
+    const inputContent = new Textarea('content', 'content');
+    inputContent.value = content;
+    const inputDate = new Input('date', 'date', 'date');
+    inputDate.value = date;
     editElem.innerHTML = `
-    <form id="edit">
+    <div class="wrapper">
       <div class="text-content">
-        <input type="text" class="title" name="title" value="${title}"/>
-        <textarea class="content" name="content">${content}</textarea>
-        <div class="date">
-          <input type="date" class="date" name="date" value="${date}"/>
+        <input type="text" class="title" name="title"/>
+        <textarea class="content" name="content"></textarea>
+        <div>
+          <input type="date" class="date" name="date"/>
         </div>
       </div>
       <div class="cta-link">
-        <button id="update-btn" type="button" class="btn-primary">Update</button>
-        <button id="cancel-btn" type="button" class="btn-primary">Cancel</button>
+        <button id="update-btn" type="button" class="btn-secondary">Update</button>
+        <button id="cancel-btn" type="button" class="btn-secondary">Cancel</button>
       </div>
-    </form>`;
+      </div>
+      `;
+      editElem.querySelector('.title').replaceWith(inputTitle);
+      editElem.querySelector('.content').replaceWith(inputContent);
+      editElem.querySelector('.date').replaceWith(inputDate);
     // update button
     editElem.querySelector('#update-btn').addEventListener('click', () => {
-      wrapper.style.transform = 'rotateY(90deg)';
-      setTimeout(() => {
-        editElem.style.display = 'none';
-        viewElem.style.display = 'block';
-        wrapper.style.transform = 'rotateY(0deg)';
-        const newTitle = editElem.querySelector('form input.title').value;
-        const newContent = editElem.querySelector('form textarea.content').value;
-        const newDate = editElem.querySelector('form input.date').value;
-        this.onUpdate(id, newTitle, newContent, newDate);
-      },500);
+      const newTitle = inputTitle.getValue();
+      const newContent = inputContent.getValue();
+      const newDate = inputDate.getValue();
+      if(newTitle && newContent && newDate){
+        wrapper.style.transform = 'rotateY(90deg)';
+        setTimeout(() => {
+          editElem.style.display = 'none';
+          viewElem.style.display = 'block';
+          wrapper.style.transform = '';
+          this.onUpdate(id, newTitle, newContent, newDate);
+        },ANIMATE_DURATION);
+      }
     });
     // cancel button
     editElem.querySelector('#cancel-btn').addEventListener('click', () => {
@@ -80,8 +96,8 @@ export default class Entry{
       setTimeout(() => {
         editElem.style.display = 'none';
         viewElem.style.display = 'block';
-        wrapper.style.transform = 'rotateY(0deg)';
-      },500);
+        wrapper.style.transform = '';
+      },ANIMATE_DURATION);
     });
 
     // hide edit layout by default

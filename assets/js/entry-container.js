@@ -8,7 +8,6 @@ export default class EntryContainer extends HTMLElement {
     super();
         // retrieve data
         const data = readEntries();
-        // const shadow = this.attachShadow({mode : 'open'});
         const wrapper = document.createElement('div');
         wrapper.setAttribute('class', 'wrapper');
         const entryContainer = document.createElement('div');
@@ -19,6 +18,7 @@ export default class EntryContainer extends HTMLElement {
             entryContainer.appendChild(entry);
           });
         }else{
+          // display placeholder
           const placeholder = `<p class="placeholder">Click on the plus icon to create a new list</p>`
           wrapper.innerHTML = placeholder;
         }

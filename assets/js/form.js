@@ -6,7 +6,7 @@ export default class Form extends HTMLElement {
   constructor(){
     super();
 
-    const addBtn = new Button('+', 'button', 'show-form btn-primary');
+    const addBtn = new Button('+', 'button', 'show-form btn-secondary');
     const wrapper = document.createElement('div');
     wrapper.setAttribute('class', 'grid');
     const formContainer = document.createElement('div');
@@ -20,7 +20,7 @@ export default class Form extends HTMLElement {
     inputDate.valueAsDate = new Date();
     const ctaWrapper = document.createElement('div');
     ctaWrapper.setAttribute('class', 'cta-wrapper');
-    const subBtn = new Button('Create', 'button', 'btn-primary');
+    const subBtn = new Button('Create', 'button', 'btn-secondary');
 
 
     addBtn.addEventListener('click', ()=> {
@@ -33,7 +33,7 @@ export default class Form extends HTMLElement {
     })
 
     subBtn.addEventListener('click', ()=> {
-      this.formHandler(form, inputTitle.value, inputContent.value, inputDate.value);
+      this.validate(inputTitle, inputContent, inputDate);
     });
 
     inputWrapper.append(inputTitle, inputContent, inputDate);
@@ -45,15 +45,15 @@ export default class Form extends HTMLElement {
 
   }
 
-  formHandler(form, title, content, date){
-    if(title && content && date){
-      createEntry(title, content, date);
+  validate(title, content, date){
+    const titleValue = title.getValue();
+    const contentValue = content.getValue();
+    const dateValue = date.getValue();
+    if(titleValue && contentValue && dateValue){
+      createEntry(titleValue, contentValue, dateValue);
       // reload browser to update view
       location.reload(true);
-    }else{
-      alert('Please enter all fields!');
-    };
-
+    }
   }
 }
 window.customElements.define('input-form', Form);

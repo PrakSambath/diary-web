@@ -6,8 +6,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform .2s ease-in-out;
+  transition: transform .1s ease-in-out;
   box-shadow: 1px 5px 5px #C6D0D9;
+}
+
+.card.secondary {
+  background-color: #FFF4A8;
 }
 
 .card:hover{
@@ -16,27 +20,33 @@
 
 /* Input Style */
 input, textarea {
+  font-size: 1rem;
+  font-weight: normal;
   padding: 8px 16px;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 4px;
-  border: 1px solid #7B8288;
+  border: none;
   text-align: left;
   letter-spacing: .5px;
   color: #3E4F5D;
   outline: none;
   box-sizing: border-box;
-  box-shadow: 1px 3px 3px #C6D0D9;
+  box-shadow: 1px 1px 3px #7B8288 inset;
   transition: all .1s linear;
 }
 
 input:focus, textarea:focus {
-  border: 1px solid #3E4F5D;
+  box-shadow: 1px 1px 5px #7B8288 inset;
+}
+
+input.warning, textarea.warning {
+  border: 1px solid #F27D7D;
 }
 
 /* Button Style */
 button {
   padding: 10px 16px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: .1px;
   border-radius: 100px;
@@ -64,4 +74,19 @@ button:hover {
 .btn-primary:not(:disabled):hover {
   color: #FAFAFA;
   background-color: #1781DD;
+}
+
+.btn-secondary {
+  color: #3E4F5D;
+  background-color: #F6DC5A;
+}
+
+.btn-secondary:disabled {
+  color: #7B8288;
+  background-color: #FFF4A8;
+}
+
+.btn-secondary:not(:disabled):hover {
+  color: #FAFAFA;
+  background-color: #C8AA19;
 }
