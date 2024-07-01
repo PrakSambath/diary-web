@@ -1,65 +1,29 @@
+import Button from '../components/button.js';
 import Entry from './entry.js';
-import {updateEntry, deleteEntry} from './crud.js';
+import {readEntries} from './crud.js';
 
-const data = [
-  {
-    "id": 1,
-    "title": "Title1",
-    "content": "Content1",
-    "date": "06/23/24"
-  },
-  {
-    "id": 2,
-    "title": "Title2",
-    "content": "Content2",
-    "date": "06/23/24"
-  },
-  {
-    "id": 3,
-    "title": "Title3",
-    "content": "Content3",
-    "date": "06/23/24"
-  },
-  {
-    "id": 4,
-    "title": "Title4",
-    "content": "Content4",
-    "date": "06/23/24"
-  },
-  {
-    "id": 5,
-    "title": "Title5",
-    "content": "Content5",
-    "date": "06/23/24"
-  }
-];
 
 export default class EntryContainer extends HTMLElement {
   constructor(){
     super();
-    const shadow = this.attachShadow({mode : 'open'});
-    const wrapper = document.createElement('div');
-    wrapper.setAttribute('class', 'entry-container');
-    data.forEach(elem => {
-      const entry = new Entry(elem.id, elem.title, elem.content, elem.date, this.onUpdate, this.onDelete);
-      wrapper.appendChild(entry);
-    });
-    const style = document.createElement("style");
-    style.textContent = `
-    h2 {
-    color: red;
-    }
-    `;
-    shadow.appendChild(style);
-    shadow.appendChild(wrapper);
-  }
-
-  onUpdate(id){
-    updateEntry(id);
-  }
-
-  onDelete(id){
-    deleteEntry(id);
+        // retrieve data
+        const data = readEntries();
+        // const shadow = this.attachShadow({mode : 'open'});
+        const wrapper = document.createElement('div');
+        wrapper.setAttribute('class', 'wrapper');
+        const entryContainer = document.createElement('div');
+        entryContainer.setAttribute('class', 'grid');
+        if(data.length != 0){
+          data.forEach(elem => {
+            const entry = new Entry(elem.id, elem.title, elem.content, elem.date);
+            entryContainer.appendChild(entry);
+          });
+        }else{
+          const placeholder = `<p class="placeholder">Click on the plus icon to create a new list</p>`
+          wrapper.innerHTML = placeholder;
+        }
+        wrapper.appendChild(entryContainer);
+        this.appendChild(wrapper); 
   }
 }
 
