@@ -3,13 +3,10 @@ const KEY = 'entries';
 
 export function createEntry(title, content, date, color){
   const data = readEntries();
-  // generate random id
-  // random number from 0 to 1
-  let id = Math.random() * 10000;
-  // remove the floating point path
-  id = id.toString().slice(0, 5);
+  // generate random number from 0 to 10000
+  const id = Math.round(Math.random() * 10000);
   // save data in the browser storage
-  data.push({id, title, content, date, color});
+  data.unshift({id, title, content, date, color});
   localStorage.setItem(KEY, JSON.stringify(data));
 }
 
@@ -23,12 +20,13 @@ export function readEntries(){
 
 export function updateEntry(id, newTitle, newContent, newDate, newColor){
   let data = readEntries();
+  // update item property
   data.forEach(element => {
     if(element.id == id){
       element.title = newTitle;
       element.content = newContent;
       element.date = newDate;
-      element.themeColor = newColor;
+      element.color = newColor;
     }
   });
   // save data in the browser storage
@@ -37,6 +35,7 @@ export function updateEntry(id, newTitle, newContent, newDate, newColor){
 
 export function deleteEntry(id){
   let data = readEntries();
+  // filter out target id
   data = data.filter((elem) => elem.id != id);
   localStorage.setItem(KEY, JSON.stringify(data));
 }
