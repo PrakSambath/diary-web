@@ -1,28 +1,18 @@
+import colors from "../data/colors.js";
+
 export default class ColorSelector extends HTMLElement{
   constructor(){
     super();
 
-    const items = [
-      {
-        colorCode: '#FFF4A8'
-      },
-      {
-        colorCode: '#9EEBE3'
-      },
-      {
-        colorCode: '#ffff22'
-      },
-      {
-        colorCode: '#36BA98'
-      }]
 
     // select first color as default
-    this.selectedColor = items[0].colorCode;
+    this.selectedColor = colors[0].colorCode;
     let prevSelected = null;
     const shadow = this.attachShadow({'mode': 'closed'});
     const wrapper = document.createElement('ul');
     wrapper.setAttribute('class', 'color-selector');
-    items.forEach(( elem, index) => {
+    // color items
+    colors.forEach(( elem, index) => {
       const colorElem = document.createElement('li');
       colorElem.setAttribute('class', 'color-item');
       colorElem.style.backgroundColor = elem.colorCode;
