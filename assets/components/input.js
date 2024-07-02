@@ -1,9 +1,10 @@
 export default class Input {
-  constructor(type = 'text', name = '', className = ''){
+  constructor(type = 'text', name = '', className = '', placeholder = ''){
     const input = document.createElement('input');
-    input.setAttribute('type', type);
-    input.setAttribute('name', name);
-    input.setAttribute('class', className);
+    input.type = type;
+    input.name = name;
+    input.className = className;
+    input.placeholder = placeholder;
     input.getValue = () => {return this.getValue(input)};
     input.addEventListener('input', (event) => {
       this.validate(event.currentTarget);

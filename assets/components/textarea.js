@@ -1,8 +1,9 @@
 export default class Textarea {
-  constructor(name = '', className = ''){
+  constructor(name = '', className = '', placeholder = ''){
     const textarea = document.createElement('textarea');
-    textarea.setAttribute('name', name);
-    textarea.setAttribute('class', className);
+    textarea.name = name;
+    textarea.className = className;
+    textarea.placeholder = placeholder;
     textarea.getValue = () => {return this.getValue(textarea)};
     textarea.addEventListener('input', (event) => {
       this.validate(event.currentTarget);

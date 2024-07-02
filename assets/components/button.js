@@ -1,8 +1,8 @@
 export default class Button {
-  constructor(text = 'Button', type = 'button', className = ''){
+  constructor(text = '', type = '', className = ''){
     const button = document.createElement('button');
-    button.setAttribute('type', type);
-    button.setAttribute('class', className);
+    button.type = type;
+    button.className = className;
     button.textContent = text;
     return button;
   }
