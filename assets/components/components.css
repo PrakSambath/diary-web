@@ -49,14 +49,35 @@ button {
   font-size: 0.875rem;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: .1px;
-  border-radius: 100px;
   border: none;
   transition: all .1s linear;
   font-weight: bold;
   box-shadow: 1px 3px 3px #C6D0D9;
 }
 
-button:hover {
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: .1px;
+  border: none;
+  font-weight: bold;
+}
+
+.primary {
+  background-color: #6BCCFF;
+}
+
+.secondary {
+  background-color: #F6DC5A;
+}
+
+.rounded {
+  border-radius: 100px;
+}
+
+button:not(:disabled):hover {
   cursor: pointer;
   transform: scale(1.1);
 }
