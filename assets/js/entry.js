@@ -1,11 +1,10 @@
 import Button from "../components/button.js";
 import Input from "../components/input.js";
 import Textarea from "../components/textarea.js";
-import { updateEntry, deleteEntry } from "./crud.js";
 
 export default class Entry{
 
-  constructor(id, title, content, date, themeColor) {
+  constructor(id, title, content, date, themeColor, onUpdate, onDelete) {
     
     const ANIMATE_DURATION = 300; // 200ms
     // card container
@@ -15,7 +14,6 @@ export default class Entry{
 
     // view layout
     const viewElem = document.createElement('div');
-    viewElem.setAttribute('id', 'view');
     viewElem.innerHTML =`
       <div class="wrapper">
       <div class="text-content">
@@ -26,14 +24,14 @@ export default class Entry{
         </div>
       </div>
       <div class="cta-link">
-        <button id="edit-btn" type="button" class="btn-secondary">Edit</button>
-        <button id="delete-btn" type="button" class="btn-secondary">Delete</button>
+        <button type="button" class="edit-btn btn-secondary rounded">Edit</button>
+        <button type="button" class="delete-btn btn-secondary rounded">Delete</button>
       </div>
       </div>
       `;
 
-    // edit button
-    viewElem.querySelector('#edit-btn').addEventListener('click', () => {
+    // show edit layout
+    viewElem.querySelector('.edit-btn').addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
         viewElem.style.display = 'none';
@@ -41,17 +39,18 @@ export default class Entry{
         wrapper.style.transform = '';
       },ANIMATE_DURATION);
     });
-    // delete button
-    viewElem.querySelector('#delete-btn').addEventListener('click', () => {
+    // delete diary
+    viewElem.querySelector('.delete-btn').addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
-        this.onDelete(id)
+        onDelete(id);
+        // reload browser to update view
+        location.reload(true);
       },ANIMATE_DURATION);
     });
 
     // edit layout
     const editElem = document.createElement('form');
-    editElem.setAttribute('id', 'edit');
     const inputTitle = new Input('text', 'title', 'title');
     inputTitle.value = title;
     const inputContent = new Textarea('content', 'content');
@@ -68,16 +67,16 @@ export default class Entry{
         </div>
       </div>
       <div class="cta-link">
-        <button id="update-btn" type="button" class="btn-secondary">Update</button>
-        <button id="cancel-btn" type="button" class="btn-secondary">Cancel</button>
+        <button type="button" class="update-btn btn-secondary rounded">Update</button>
+        <button type="button" class="cancel-btn btn-secondary rounded">Cancel</button>
       </div>
       </div>
       `;
       editElem.querySelector('.title').replaceWith(inputTitle);
       editElem.querySelector('.content').replaceWith(inputContent);
       editElem.querySelector('.date').replaceWith(inputDate);
-    // update button
-    editElem.querySelector('#update-btn').addEventListener('click', () => {
+    // update diary
+    editElem.querySelector('.update-btn').addEventListener('click', () => {
       const newTitle = inputTitle.getValue();
       const newContent = inputContent.getValue();
       const newDate = inputDate.getValue();
@@ -87,12 +86,14 @@ export default class Entry{
           editElem.style.display = 'none';
           viewElem.style.display = 'block';
           wrapper.style.transform = '';
-          this.onUpdate(id, newTitle, newContent, newDate, themeColor);
+          onUpdate(id, newTitle, newContent, newDate, themeColor);
+          // reload browser to update view
+          location.reload(true);
         },ANIMATE_DURATION);
       }
     });
-    // cancel button
-    editElem.querySelector('#cancel-btn').addEventListener('click', () => {
+    // close edit layout
+    editElem.querySelector('.cancel-btn').addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
         editElem.style.display = 'none';
@@ -107,17 +108,5 @@ export default class Entry{
     // return view
     wrapper.append(viewElem, editElem);
     return wrapper;
-  }
-
-  onUpdate(id, title, content, date, color){
-    updateEntry(id, title, content, date, color);
-    // reload browser to update view
-    location.reload(true);
-  }
-
-  onDelete(id){
-    deleteEntry(id);
-    // reload browser to update view
-    location.reload(true);
   }
 }

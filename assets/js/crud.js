@@ -1,42 +1,64 @@
-// data name
-const KEY = 'entries';
+// CRUD
+// C : Create
+// R : Read
+// U : Update
+// D : Delete
 
-export function createEntry(title, content, date, color){
-  const data = readEntries();
-  // generate random number from 0 to 10000
-  const id = Math.round(Math.random() * 10000);
-  // save data in the browser storage
-  data.unshift({id, title, content, date, color});
-  localStorage.setItem(KEY, JSON.stringify(data));
+export default class CRUD {
+
+  constructor(key){
+    this.key = key;
+  }
+
+  createEntry(title, content, date, color){
+    const data = this.readEntries();
+    // generate random number from 0 to 10000
+    const id = Math.round(Math.random() * 10000);
+    data.unshift({id, title, content, date, color});
+    // save data in the browser storage
+    saveData(this.key, data);
+  }
+  
+  readEntries(){
+    // load data from the browser storage
+    const data = loadData(this.key);
+    return data != null? data :[];
+  }
+  
+  updateEntry(id, newTitle, newContent, newDate, newColor){
+    let data = this.readEntries();
+    // update item property
+    data.forEach(element => {
+      if(element.id == id){
+        element.title = newTitle;
+        element.content = newContent;
+        element.date = newDate;
+        element.color = newColor;
+      }
+    });
+    // save data in the browser storage
+    saveData(this.key, data);
+  }
+  
+  deleteEntry(id){
+    let data = this.readEntries();
+    // filter out target id
+    data = data.filter((elem) => elem.id != id);
+    // save data in the browser storage
+    saveData(this.key, data)
+  }
 }
 
-export function readEntries(){
-  // load data from browser storage
-  const strData = localStorage.getItem(KEY);
+export function saveData(key = '', data = {}){
+  // convert json to string
+  const strData = JSON.stringify(data);
+  localStorage.setItem(key, strData);
+}
+
+export function loadData(key){
   // convert string to json
-  const objData = JSON.parse(strData);
-  return objData != null? objData: [];
-}
-
-export function updateEntry(id, newTitle, newContent, newDate, newColor){
-  let data = readEntries();
-  // update item property
-  data.forEach(element => {
-    if(element.id == id){
-      element.title = newTitle;
-      element.content = newContent;
-      element.date = newDate;
-      element.color = newColor;
-    }
-  });
-  // save data in the browser storage
-  localStorage.setItem(KEY, JSON.stringify(data));
-}
-
-export function deleteEntry(id){
-  let data = readEntries();
-  // filter out target id
-  data = data.filter((elem) => elem.id != id);
-  localStorage.setItem(KEY, JSON.stringify(data));
+  const strData = localStorage.getItem(key);
+  const jsonData = JSON.parse(strData);
+  return jsonData;
 }
 

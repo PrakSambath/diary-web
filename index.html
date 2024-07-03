@@ -6,21 +6,24 @@
   <link rel="stylesheet" href="./assets/css/grid.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/components/components.css">
-  <script type="module" src="./assets/components/components.js"></script>
+  <script type="module" src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/app.js"></script>
   <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
   <title>Diary Application</title>
 </head>
 <body>
   <header>
     <div class="container">
-      <p><app-name></app-name></p>
+      <nav class="nav-bar">
+        <p><app-name></app-name></p>
+        <user-profile></user-profile>
+      </nav>
     </div>
   </header>
 
   <main>
     <div class="container">
-      <input-form></input-form>
-      <entry-container></entry-container>
+      <app-content></app-content>
     </div>
   </main>
 
