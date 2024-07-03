@@ -44,20 +44,6 @@ header .container {
   height: 100%;
 }
 
-.user-dashboard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--gap);
-  padding: var(--card-padding);
-  border-radius: var(--card-border-radius);
-  background-color: var(--header-background);
-}
-
-.user-dashboard.hidden{
-  display: none;
-}
-
 .user-profile {
   display: flex;
   align-items: flex-end;
@@ -70,7 +56,40 @@ header .container {
   width: fit-content;
 }
 
+.user-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  background-color: var(--header-background);
+}
 
+.user-dashboard.hidden{
+  display: none;
+}
+
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-dashboard .entry-number {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--text-input-background);
+  border-radius: var(--button-border-radius);
+  color: var(--text-primary-color);
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: var(--margin-x);
+}
 
 /* Main Section Style */
 main {
