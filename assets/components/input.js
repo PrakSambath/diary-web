@@ -14,7 +14,7 @@ export default class Input {
 
   getValue(target){
     this.validate(target);
-    return target.value;
+    return target.value.trim();
   }
 
   validate(target){
