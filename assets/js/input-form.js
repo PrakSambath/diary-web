@@ -9,7 +9,7 @@ export default class InputForm extends HTMLElement {
     super();
 
     // input form element
-    const addBtn = new Button('+', 'button', 'show-form btn-secondary rounded');
+    const addBtn = new Button('', 'button', 'show-form btn-secondary rounded');
     const wrapper = document.createElement('div');
     wrapper.setAttribute('class', 'grid');
     const formContainer = document.createElement('div');
@@ -29,12 +29,8 @@ export default class InputForm extends HTMLElement {
     // show/hide input form fields
     addBtn.addEventListener('click', ()=> {
       formContainer.classList.toggle('visible');
-      if(addBtn.textContent == '+'){
-        addBtn.textContent = '-';
-      }else{
-        addBtn.textContent = '+';
-      }
-    })
+      addBtn.classList.toggle('closed');
+    });
 
     // create diary
     createBtn.addEventListener('click', ()=> {
