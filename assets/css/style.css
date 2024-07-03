@@ -187,22 +187,14 @@ form .cta-wrapper {
   margin-left: 50%;
   margin-top: 50%;
   transform: translateX(calc(-50%)) translateY(calc(-50%));
-  font-size: 32px;
+  font-size: var(--font-size-lg);
 }
 
 .show-form.closed::before{
   content: '\2212';
-  font-size: 32px;
 }
 
 /* Diary Style */
-/* .entry-header {
-  font-size: 2rem;
-  text-align: center;
-  color: #3E4F5D;
-  border-bottom: 1px solid #C6D0D9;
-} */
-
 entry-container {
   display: block;
   margin-top: var(--margin-y);
