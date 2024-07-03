@@ -1,17 +1,71 @@
+:root {
+  --clr-primary-light: #CAF4FF;
+  --clr-primary-normal: #6BCCFF;
+  --clr-primary-dark: #1781DD;
+  --clr-secondary-light: #FFF4A8;
+  --clr-secondary-normal: #F6DC5A;
+  --clr-secondary-dark: #C8AA19;
+  --clr-tertiary-light: #9EEAE3;
+  --clr-tertiary-light: #4AD9CB;
+  --clr-tertiary-light: #1B7E75;
+  --clr-light-900: #FAFAFA;
+  --clr-light-700: #C6D0D9;
+  --clr-light-500: #7B8288;
+  --clr-light-300: #3E4F5D;
+  --clr-light-100: #223444;
+
+  --border-color: var(--clr-light-500);
+  --header-background: var(--clr-secondary-normal);
+  --footer-background: var(--clr-secondary-normal);
+  --body-background: var(--clr-primary-light);
+  --shadow-color: var(--clr-light-700);
+  --text-primary-color: var(--clr-light-300);
+  --text-secondary-color: var(--clr-light-500);
+  --form-background: var(--clr-light-900);
+  --form-foreground: var(--clr-secondary-normal);
+  --text-input-background: var(--clr-light-900);
+  --text-input-foreground: var(--clr-light-500);
+
+  --padding: 16px;
+  --padding-y: 16px;
+  --padding-x: 16px;
+  --card-padding: 16px;
+  --button-padding: 10px 16px;
+  --button-padding-x: 16px;
+  --button-padding-y: 10px;
+  --section-padding: 64px;
+  --section-padding-x: 64px;
+  --section-padding-y: 64px;
+  --section-margin: 64px;
+  --section-margin-x: 64px;
+  --section-margin-y: 64px;
+  --gap: 16px;
+  --grid-gap: 32px;
+  --margin: 16px;
+  --margin-x: 16px;
+  --margin-y: 16px;
+  --card-border-radius: 12px;
+  --button-border-radius: 100px;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --transition: all 200ms ease-in-out;
+}
+
 /* Card Style */
 .card {
-  background-color: #CAF4FF;
-  border-radius: 12px;
-  padding: 16px;
+  background-color: var(--clr-primary-light);
+  border-radius: var(--card-border-radius);
+  padding: var(--padding);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: transform .1s ease-in-out;
-  box-shadow: 1px 5px 5px #C6D0D9;
+  gap: var(--gap);
+  transition: var(--transition);
+  box-shadow: 1px 5px 5px var(--shadow-color);
 }
 
 .card.secondary {
-  background-color: #FFF4A8;
+  background-color: var(--clr-secondary-light);
 }
 
 .card:hover{
@@ -23,21 +77,21 @@ input, textarea {
   font-size: 1rem;
   font-weight: normal;
   padding: 8px 16px;
-  font-family: Arial, Helvetica, "Hanuman", sans-serif;;
+  font-family: Arial, Helvetica, "Hanuman", sans-serif;
   border-radius: 4px;
   border: none;
   text-align: left;
   letter-spacing: .5px;
-  color: #3E4F5D;
+  color: var(--text-primary-color);
   outline: none;
   box-sizing: border-box;
-  box-shadow: 1px 1px 3px #7B8288 inset;
-  transition: all .1s linear;
-  background-color: #FAFAFA;
+  box-shadow: 1px 1px 3px var(--text-input-foreground) inset;
+  transition: var(--transition);
+  background-color: var(--text-input-background);
 }
 
 input:focus, textarea:focus {
-  box-shadow: 1px 1px 5px #7B8288 inset;
+  box-shadow: 1px 1px 5px  var(--text-input-foreground) inset;
 }
 
 input.warning, textarea.warning {
@@ -46,19 +100,19 @@ input.warning, textarea.warning {
 
 /* Button Style */
 button {
-  padding: 10px 16px;
+  padding: var(--button-padding);
   font-size: 0.875rem;
   font-family: Arial, Helvetica, "Hanuman", sans-serif;
   letter-spacing: .1px;
   border: none;
-  transition: all .1s linear;
+  transition: var(--transition);
   font-weight: bold;
-  box-shadow: 1px 3px 3px #C6D0D9;
+  box-shadow: 1px 3px 3px var(--shadow-color);
 }
 
 .btn {
   display: inline-block;
-  padding: 10px 16px;
+  padding: var(--button-padding);
   font-size: 0.875rem;
   font-family: Arial, Helvetica, "Hanuman", sans-serif;
   letter-spacing: .1px;
@@ -67,11 +121,11 @@ button {
 }
 
 .primary {
-  background-color: #6BCCFF;
+  background-color: var(--clr-primary-normal);
 }
 
 .secondary {
-  background-color: #F6DC5A;
+  background-color: var(--clr-secondary-normal);
 }
 
 .rounded {
@@ -84,31 +138,31 @@ button:not(:disabled):hover {
 }
 
 .btn-primary {
-  color: #3E4F5D;
-  background-color: #6BCCFF;
+  color: var(--text-primary-color);
+  background-color: var(--clr-primary-normal);
 }
 
 .btn-primary:disabled {
-  color: #7B8288;
-  background-color: #CAF4FF;
+  color: var(--text-secondary-color);
+  background-color: var(--clr-primary-light);
 }
 
 .btn-primary:not(:disabled):hover {
-  color: #FAFAFA;
-  background-color: #1781DD;
+  color: var(--clr-light-900);
+  background-color: var(--clr-primary-dark);
 }
 
 .btn-secondary {
-  color: #3E4F5D;
-  background-color: #F6DC5A;
+  color: var(--text-primary-color);
+  background-color: var(--clr-secondary-normal);
 }
 
 .btn-secondary:disabled {
-  color: #7B8288;
-  background-color: #FFF4A8;
+  color: var(--text-secondary-color);
+  background-color: var(--clr-secondary-light);
 }
 
 .btn-secondary:not(:disabled):hover {
-  color: #FAFAFA;
-  background-color: #C8AA19;
+  color: var(--clr-light-900);
+  background-color: var(--clr-secondary-dark);
 }
