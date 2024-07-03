@@ -33,6 +33,7 @@ input, textarea {
   box-sizing: border-box;
   box-shadow: 1px 1px 3px #7B8288 inset;
   transition: all .1s linear;
+  background-color: #FAFAFA;
 }
 
 input:focus, textarea:focus {
