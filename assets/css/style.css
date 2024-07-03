@@ -320,6 +320,7 @@ entry-container {
   flex-basis: 1;
   flex-grow: 1;
   background-color: var(--form-foreground);
+  color: var(--text-primary-color);
 }
 
 .login-form .tab-wrapper .disabled {
