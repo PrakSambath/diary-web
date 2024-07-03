@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/grid.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/components/components.css">
+  <script type="module" src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/app.js"></script>
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+  <title>Diary Application</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav-bar">
+        <p><app-name></app-name></p>
+        <user-profile></user-profile>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <app-content></app-content>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-credit">Developer : <app-credit></app-credit></p>
+    </div>
+  </footer>
+
+</body>
+</html>
