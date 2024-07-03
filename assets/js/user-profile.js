@@ -1,4 +1,5 @@
 import Button from "../components/button.js";
+import CRUD from "./crud.js";
 import User from "./user.js";
 
 export default class UserProfile extends HTMLElement {
@@ -20,9 +21,10 @@ export default class UserProfile extends HTMLElement {
       // user dashboard
       const dashboard = document.createElement('div');
       dashboard.className = 'user-dashboard hidden';
-      const userName = document.createElement('p');
-      userName.className = 'user-name';
-      userName.innerHTML = user.userName;
+      const userInfo = document.createElement('div');
+      userInfo.className = 'user-info';
+      const entryNumber = new CRUD(user.userName).readEntries().length;
+      userInfo.innerHTML = `<span class="user-name">${user.userName}</span><span class="entry-number">${entryNumber}</span>`;
       const logoutBtn = new Button('Log out', 'button', 'btn-secondary rounded');
       // log out user
       logoutBtn.addEventListener('click', () => {
@@ -30,9 +32,9 @@ export default class UserProfile extends HTMLElement {
         // refresh app
         window.location.reload();
       });
-      
+
       // create layout
-      dashboard.append(userName, logoutBtn);
+      dashboard.append(userInfo, logoutBtn);
       accountProfile.append(userBtn, dashboard);
       this.appendChild(accountProfile);
     }
