@@ -19,6 +19,8 @@
   --footer-background: var(--clr-secondary-normal);
   --body-background: var(--clr-primary-light);
   --shadow-color: var(--clr-light-700);
+  --card-shadow: -5px 5px 5px var(--shadow-color);
+  --button-shadow: -3px 3px 3px var(--shadow-color);
   --text-primary-color: var(--clr-light-300);
   --text-secondary-color: var(--clr-light-500);
   --form-background: var(--clr-light-900);
@@ -67,7 +69,7 @@
   flex-direction: column;
   gap: var(--gap);
   transition: var(--transition);
-  box-shadow: 1px 5px 5px var(--shadow-color);
+  box-shadow: var(--card-shadow);
 }
 
 .card.secondary {
@@ -113,7 +115,7 @@ button {
   border: none;
   transition: var(--transition);
   font-weight: bold;
-  box-shadow: 1px 3px 3px var(--shadow-color);
+  box-shadow: var(--button-shadow);
 }
 
 .btn {

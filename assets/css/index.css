@@ -75,6 +75,7 @@ header .container {
   border-radius: var(--card-border-radius);
   background-color: var(--header-background);
   margin-top: var(--margin-y);
+  box-shadow: var(--card-shadow);
 }
 
 .user-dashboard.hidden{
@@ -120,7 +121,7 @@ main .container {
   height: 100%;
 }
 
-/* mobile: 734px wide down*/
+/* Mobile: 734px wide down*/
 @media screen and (max-width:743px) {
   .form-container {
     grid-column: 1 / span 4;
@@ -131,7 +132,7 @@ main .container {
   }
 }
 
-/* tablet: 744px wide up*/
+/* Tablet: 744px wide up*/
 @media screen and (min-width: 744px) {
   .form-container {
     grid-column: 2 / span 6;
@@ -142,7 +143,7 @@ main .container {
   }
 }
 
-/* desktop: 1200px wide up*/
+/* Desktop: 1200px wide up*/
 @media screen and (min-width:1200px) {
   .form-container {
     grid-column: 4 / span 6;
@@ -233,7 +234,7 @@ main .container {
   content: '\2212';
 }
 
-/* Diary Style */
+/* Diary Card Style */
 entry-container {
   display: block;
   margin-top: var(--margin-y);
@@ -310,6 +311,7 @@ entry-container {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
+  box-shadow: var(--card-shadow);
 }
 
 .login-form .tab-wrapper {

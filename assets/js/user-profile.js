@@ -23,7 +23,7 @@ export default class UserProfile extends HTMLElement {
 
       // user dashboard
       const dashboard = document.createElement('sidebar');
-      dashboard.className = 'user-dashboard hidden';
+      dashboard.className = 'user-dashboard card hidden';
       const userInfo = document.createElement('div');
       userInfo.className = 'user-info';
       const entryNumber = new CRUD(user.userName).readEntries().length;
