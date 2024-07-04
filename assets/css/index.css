@@ -63,6 +63,7 @@ header .container {
 
 .user-profile .user-btn {
   width: fit-content;
+  min-height: 40px;
 }
 
 .user-dashboard {
@@ -73,6 +74,7 @@ header .container {
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
   background-color: var(--header-background);
+  margin-top: var(--margin-y);
 }
 
 .user-dashboard.hidden{
