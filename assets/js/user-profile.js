@@ -31,14 +31,6 @@ export default class UserProfile extends HTMLElement {
       <span class="user-name">${user.userName}</span>
       <span class="entry-number">${entryNumber}</span>`;
 
-      // switch language
-      const langBtn = new Button(this.appText.getNextFullLangText(), 'button', 'btn-secondary rounded');
-      langBtn.addEventListener('click', () => {
-        this.appText.switchLang();
-        // refresh browser
-        location.reload(true);
-      });
-
       // log out user
       const logoutBtn = new Button(this.appText.string.logout, 'button', 'btn-logout btn-secondary rounded');
       logoutBtn.addEventListener('click', () => {
@@ -48,7 +40,7 @@ export default class UserProfile extends HTMLElement {
       });
 
       // create layout
-      dashboard.append(langBtn, userInfo, logoutBtn);
+      dashboard.append(userInfo, logoutBtn);
       accountProfile.append(userBtn, dashboard);
       this.appendChild(accountProfile);
     }

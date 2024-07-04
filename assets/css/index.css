@@ -46,11 +46,20 @@ header .container {
   height: 100%;
 }
 
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap);
+}
+
 .user-profile {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   height: 40px;
+  width: 96px;
   gap: var(--gap);
 }
 
