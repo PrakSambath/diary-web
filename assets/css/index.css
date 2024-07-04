@@ -97,7 +97,7 @@ header .container {
 .user-dashboard .entry-number {
   display: inline-block;
   padding: 4px 8px;
-  background-color: var(--text-input-background);
+  background-color: var(--clr-light-900);
   border-radius: var(--button-border-radius);
   color: var(--text-primary-color);
   font-weight: bolder;
@@ -171,6 +171,9 @@ main .container {
   gap: var(--gap);
   overflow: hidden;
   padding: 0px var(--padding-x);
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
 }
 
 .form-container.visible form {
@@ -347,6 +350,10 @@ entry-container {
   justify-content: center;
   margin-top: var(--margin-y);
   padding-bottom: var(--padding-y);
+}
+
+.login-form .cta-wrapper button {
+  min-width: 96px;
 }
 
 /* Footer Style */

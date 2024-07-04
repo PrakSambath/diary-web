@@ -8,6 +8,9 @@
   --clr-tertiary-light: #9EEAE3;
   --clr-tertiary-light: #4AD9CB;
   --clr-tertiary-light: #1B7E75;
+  --clr-quaternary-light: #F27D7D;
+  --clr-quaternary-normal: #EC3C3C;
+  --clr-quaternary-dark: #C31313;
   --clr-light-900: #FAFAFA;
   --clr-light-700: #C6D0D9;
   --clr-light-500: #7B8288;
@@ -20,13 +23,16 @@
   --body-background: var(--clr-primary-light);
   --shadow-color: var(--clr-light-700);
   --card-shadow: -5px 5px 5px var(--shadow-color);
-  --button-shadow: -3px 3px 3px var(--shadow-color);
+  --textbox-background-shadow: -2px 2px 3px var(--shadow-color);
+  --textbox-background-hover-shadow: -2px 2px 5px var(--shadow-color);
+  --textbox-foreground-shadow: 1px 1px 3px var(--shadow-color) inset;
+  --textbox-foreground-hover-shadow: 1px 1px 5px var(--shadow-color) inset;
+  --button-shadow: -1px 1px 4px var(--shadow-color);
   --text-primary-color: var(--clr-light-300);
   --text-secondary-color: var(--clr-light-500);
   --form-background: var(--clr-light-900);
   --form-foreground: var(--clr-secondary-normal);
-  --text-input-background: var(--clr-light-900);
-  --text-input-foreground: var(--clr-light-500);
+  --textbox-background: var(--clr-light-900);
 
   --padding: 16px;
   --padding-y: 16px;
@@ -85,7 +91,7 @@ input, textarea {
   font-size: 1rem;
   font-weight: normal;
   padding: 8px 16px;
-  font-family: Arial, Helvetica, "Hanuman", sans-serif;
+  font-family: var(--font-family);
   border-radius: 4px;
   border: none;
   text-align: left;
@@ -93,24 +99,24 @@ input, textarea {
   color: var(--text-primary-color);
   outline: none;
   box-sizing: border-box;
-  box-shadow: 1px 1px 3px var(--text-input-foreground) inset;
+  box-shadow: var(--textbox-foreground-shadow);
   transition: var(--transition);
-  background-color: var(--text-input-background);
+  background-color: var(--textbox-background);
 }
 
 input:focus, textarea:focus {
-  box-shadow: 1px 1px 5px  var(--text-input-foreground) inset;
+  box-shadow: var(--textbox-foreground-hover-shadow), var(--textbox-background-hover-shadow);
 }
 
 input.warning, textarea.warning {
-  border: 1px solid #F27D7D;
+  border: 1px solid var(--clr-quaternary-light);
 }
 
 /* Button Style */
 button {
   padding: var(--button-padding);
   font-size: 0.875rem;
-  font-family: Arial, Helvetica, "Hanuman", sans-serif;
+  font-family: var(--font-family);
   letter-spacing: .1px;
   border: none;
   transition: var(--transition);
@@ -122,7 +128,7 @@ button {
   display: inline-block;
   padding: var(--button-padding);
   font-size: 0.875rem;
-  font-family: Arial, Helvetica, "Hanuman", sans-serif;
+  font-family: var(--font-family);
   letter-spacing: .1px;
   border: none;
   font-weight: bold;
