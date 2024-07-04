@@ -1,9 +1,11 @@
-import Button from "../components/button.js";
-import Input from "../components/input.js";
-import Textarea from "../components/textarea.js";
-import ColorSelector from "./color-selector.js";
-import CRUD from "./crud.js";
-import User from "./user.js";
+'use strict';
+
+import Button from '../components/button.js';
+import Input from '../components/input.js';
+import Textarea from '../components/textarea.js';
+import ColorSelector from './color-selector.js';
+import CRUD from './crud.js';
+import User from './user.js';
 export default class InputForm extends HTMLElement {
   constructor(){
     super();
@@ -15,6 +17,7 @@ export default class InputForm extends HTMLElement {
     const formContainer = document.createElement('div');
     formContainer.setAttribute('class', 'form-container');
     const form = document.createElement('form');
+    form.className = 'input-form';
     const inputWrapper = document.createElement('div');
     inputWrapper.setAttribute('class', 'input-wrapper');
     const inputTitle = new Input('text', 'title', 'title', 'Title');
@@ -61,6 +64,3 @@ export default class InputForm extends HTMLElement {
   }
 }
 window.customElements.define('input-form', InputForm);
-
-
-

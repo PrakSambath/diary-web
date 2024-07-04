@@ -11,7 +11,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  font-family: Arial, Helvetica, "Hanuman", sans-serif;
+  font-family: var(--font-family);
   color: var(--text-primary-color);
 }
 
@@ -87,8 +87,7 @@ header .container {
 
 .user-dashboard .entry-number {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  padding: 4px 8px;
   background-color: var(--text-input-background);
   border-radius: var(--button-border-radius);
   color: var(--text-primary-color);
@@ -164,21 +163,21 @@ main .container {
   padding-bottom: var(--padding-y);
 }
 
-form .input-wrapper {
+.input-form .input-wrapper {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
   margin-top: var(--padding-y);
 }
 
-form .title {
+.input-form .title {
   font-size: var(--font-size-md);
   font-weight: bold;
   min-height: 56px;
   width: 100%;
 }    
 
-form .content {
+.input-form .content {
   font-size: var(--font-size-md);
   font-weight: normal;
   min-height: 112px;
@@ -186,13 +185,13 @@ form .content {
 }
 
 
-form .date {
+.input-form .date {
   font-size: var(--font-size-md);
   font-weight: normal;
   width: fit-content;
 }
 
-form .cta-wrapper {
+.input-form .cta-wrapper {
   display: flex;
   justify-content: flex-end;
   gap: var(--gap);
@@ -275,6 +274,7 @@ entry-container {
   margin-top: var(--margin-y);
 }
 
+/* Empty list placeholder */
 .placeholder {
   font-size: var(--font-size-sm);
   color: var(--text-secondary-color);

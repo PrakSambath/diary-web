@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Input {
   constructor(type = 'text', name = '', className = '', placeholder = ''){
     const input = document.createElement('input');

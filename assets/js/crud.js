@@ -1,3 +1,5 @@
+'use strict';
+
 // CRUD
 // C : Create
 // R : Read
@@ -42,7 +44,7 @@ export default class CRUD {
   
   deleteEntry(id){
     let data = this.readEntries();
-    // filter out target id
+    // filter out item match with id
     data = data.filter((elem) => elem.id != id);
     // save data in the browser storage
     saveData(this.key, data)
@@ -61,4 +63,3 @@ export function loadData(key){
   const jsonData = JSON.parse(strData);
   return jsonData;
 }
-

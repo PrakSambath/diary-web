@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/grid.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/components/components.css">
-  <script type="module" src="./assets/js/script.js"></script>
-  <script type="module" src="./assets/js/app.js"></script>
+  <link rel="stylesheet" href="./assets/css/grid.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +15,7 @@
   <title>Diary Application</title>
 </head>
 <body>
+  <!-- starts header section -->
   <header>
     <div class="container">
       <nav class="nav-bar">
@@ -24,18 +24,24 @@
       </nav>
     </div>
   </header>
+  <!-- ends header section -->
 
+  <!-- starts main section -->
   <main>
     <div class="container">
       <app-content></app-content>
     </div>
   </main>
+  <!-- ends main section -->
 
+  <!-- starts footer section -->
   <footer>
     <div class="container">
       <p class="footer-credit">Developer : <app-credit></app-credit></p>
     </div>
   </footer>
+  <!-- ends footer section -->
 
+  <script type="module" defer src="./assets/js/index.js"></script>
 </body>
 </html>

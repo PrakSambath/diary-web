@@ -1,9 +1,8 @@
-import Button from '../components/button.js';
+'use strict';
+
 import Entry from './entry.js';
 import CRUD from './crud.js';
 import User from './user.js';
-
-// const user = new User();
 
 export default class EntryContainer extends HTMLElement {
   constructor(){
@@ -21,10 +20,11 @@ export default class EntryContainer extends HTMLElement {
         entryContainer.appendChild(entry);
       });
     }else{
-      // display placeholder
+      // if there is no list, display placeholder
       const placeholder = `<p class="placeholder">Click on the plus icon to create a new list</p>`
       wrapper.innerHTML = placeholder;
     }
+    // create layout
     wrapper.appendChild(entryContainer);
     this.appendChild(wrapper); 
   }
@@ -43,4 +43,3 @@ export default class EntryContainer extends HTMLElement {
 }
 
 window.customElements.define('entry-container', EntryContainer);
-

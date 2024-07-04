@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Button {
   constructor(text = '', type = '', className = ''){
     const button = document.createElement('button');

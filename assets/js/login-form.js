@@ -1,6 +1,8 @@
-import Button from "../components/button.js";
-import Input from "../components/input.js";
-import User from "./user.js";
+'use strict';
+
+import Button from '../components/button.js';
+import Input from '../components/input.js';
+import User from './user.js';
 
 export default class LoginForm extends HTMLElement {
   constructor(){
@@ -47,7 +49,7 @@ export default class LoginForm extends HTMLElement {
         if(isSuccess){
           formTab.submit();
         }else{
-          alert('Username exist.');
+          alert('Username is already taken or exists.');
         }
       }
     });

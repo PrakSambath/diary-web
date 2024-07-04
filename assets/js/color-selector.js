@@ -1,4 +1,6 @@
-import colors from "../data/colors.js";
+'use strict';
+
+import colors from '../data/colors.js';
 
 export default class ColorSelector extends HTMLElement{
   constructor(){
