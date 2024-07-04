@@ -3,6 +3,7 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 import Textarea from '../components/textarea.js';
+import AppText from './appText.js';
 import ColorSelector from './color-selector.js';
 import CRUD from './crud.js';
 import User from './user.js';
@@ -10,6 +11,7 @@ export default class InputForm extends HTMLElement {
   constructor(){
     super();
 
+    this.appText = new AppText();
     // input form element
     const addBtn = new Button('', 'button', 'show-form btn-secondary rounded');
     const wrapper = document.createElement('div');
@@ -20,14 +22,14 @@ export default class InputForm extends HTMLElement {
     form.className = 'input-form';
     const inputWrapper = document.createElement('div');
     inputWrapper.setAttribute('class', 'input-wrapper');
-    const inputTitle = new Input('text', 'title', 'title', 'Title');
-    const inputContent = new Textarea('content', 'content', 'Content');
+    const inputTitle = new Input('text', 'title', 'title', this.appText.string.title);
+    const inputContent = new Textarea('content', 'content', this.appText.string.content);
     const inputDate = new Input('date', 'date', 'date');
     inputDate.valueAsDate = new Date();
     const colorSelector = new ColorSelector();
     const ctaWrapper = document.createElement('div');
     ctaWrapper.setAttribute('class', 'cta-wrapper');
-    const createBtn = new Button('Create', 'button', 'btn-secondary rounded');
+    const createBtn = new Button(this.appText.string.create, 'button', 'btn-secondary rounded');
 
     // show/hide input form fields
     addBtn.addEventListener('click', ()=> {

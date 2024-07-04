@@ -1,10 +1,12 @@
 'use strict';
 
+import AppText from "./appText.js";
+
 export default class AppCredit extends HTMLElement {
   constructor(){
     super();
-    const DEVELOPER = 'Sambath PRAK';
-    const header = `<span class="app-credit">${DEVELOPER}</span>`;
+    const appText = new AppText();
+    const header = `<span class="app-credit">${appText.string.appCredit}</span>`;
     this.innerHTML = header;
   }
 }

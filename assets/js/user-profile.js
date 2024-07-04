@@ -1,34 +1,46 @@
 'use strict';
 
 import Button from '../components/button.js';
+import AppText from './appText.js';
 import CRUD from './crud.js';
 import User from './user.js';
 
 export default class UserProfile extends HTMLElement {
   constructor(){
     super();
+    this.appText = new AppText();
     const user = new User();
     if(user.loggedin){
       // create layout element
       const accountProfile = document.createElement('div');
       accountProfile.className = 'user-profile';
 
-      const userBtn = new Button('User', 'button', 'btn-secondary rounded user-btn');
-      
       // show/hide dashboard
+      const userBtn = new Button(this.appText.string.user, 'button', 'btn-secondary rounded user-btn');
       userBtn.addEventListener('click', () => {
         dashboard.classList.toggle('hidden');
       });
-      
+
       // user dashboard
       const dashboard = document.createElement('sidebar');
       dashboard.className = 'user-dashboard hidden';
       const userInfo = document.createElement('div');
       userInfo.className = 'user-info';
       const entryNumber = new CRUD(user.userName).readEntries().length;
-      userInfo.innerHTML = `<span class="user-name">${user.userName}</span><span class="entry-number">${entryNumber}</span>`;
-      const logoutBtn = new Button('Log out', 'button', 'btn-secondary rounded');
+      userInfo.innerHTML = `
+      <span class="user-name">${user.userName}</span>
+      <span class="entry-number">${entryNumber}</span>`;
+
+      // switch language
+      const langBtn = new Button(this.appText.getNextFullLangText(), 'button', 'btn-secondary rounded');
+      langBtn.addEventListener('click', () => {
+        this.appText.switchLang();
+        // refresh browser
+        location.reload(true);
+      });
+
       // log out user
+      const logoutBtn = new Button(this.appText.string.logout, 'button', 'btn-logout btn-secondary rounded');
       logoutBtn.addEventListener('click', () => {
         user.logout();
         // refresh app
@@ -36,7 +48,7 @@ export default class UserProfile extends HTMLElement {
       });
 
       // create layout
-      dashboard.append(userInfo, logoutBtn);
+      dashboard.append(langBtn, userInfo, logoutBtn);
       accountProfile.append(userBtn, dashboard);
       this.appendChild(accountProfile);
     }

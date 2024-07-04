@@ -3,11 +3,13 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 import Textarea from '../components/textarea.js';
+import AppText from './appText.js';
 
 export default class Entry{
 
   constructor(id, title, content, date, themeColor, onUpdate, onDelete) {
     
+    this.appText = new AppText();
     const ANIMATE_DURATION = 300; // 200ms
     // card container
     const wrapper = document.createElement('div');
@@ -27,8 +29,8 @@ export default class Entry{
       </div>
       </div>
       `;
-    const editBtn = new Button('Edit', 'button', 'btn-secondary rounded');
-    const delBtn = new Button('Delete', 'button', 'btn-secondary rounded');
+    const editBtn = new Button(this.appText.string.edit, 'button', 'btn-secondary rounded');
+    const delBtn = new Button(this.appText.string.delete, 'button', 'btn-secondary rounded');
     viewLayout.querySelector('.cta-link').append(editBtn, delBtn);
 
     // show edit layout
@@ -60,14 +62,14 @@ export default class Entry{
     </div>
     </div>
     `;
-    const inputTitle = new Input('text', 'title', 'title');
+    const inputTitle = new Input('text', 'title', 'title', this.appText.string.title);
     inputTitle.value = title;
-    const inputContent = new Textarea('content', 'content');
+    const inputContent = new Textarea('content', 'content', this.appText.string.content);
     inputContent.value = content;
     const inputDate = new Input('date', 'date', 'date');
     inputDate.value = date;
-    const updateBtn = new Button('Update', 'button', 'btn-secondary rounded');
-    const cancelBtn = new Button('Cancel', 'button', 'btn-secondary rounded');
+    const updateBtn = new Button(this.appText.string.update, 'button', 'btn-secondary rounded');
+    const cancelBtn = new Button(this.appText.string.cancel, 'button', 'btn-secondary rounded');
     editLayout.querySelector('.text-content').append(inputTitle, inputContent, inputDate);
     editLayout.querySelector('.cta-link').append(updateBtn, cancelBtn);
 

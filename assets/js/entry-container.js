@@ -3,6 +3,7 @@
 import Entry from './entry.js';
 import CRUD from './crud.js';
 import User from './user.js';
+import AppText from './appText.js';
 
 export default class EntryContainer extends HTMLElement {
   constructor(){
@@ -21,7 +22,8 @@ export default class EntryContainer extends HTMLElement {
       });
     }else{
       // if there is no list, display placeholder
-      const placeholder = `<p class="placeholder">Click on the plus icon to create a new list</p>`
+      const appText = new AppText();
+      const placeholder = `<p class="placeholder">${appText.string.emptyListPlaceholderText}</p>`
       wrapper.innerHTML = placeholder;
     }
     // create layout

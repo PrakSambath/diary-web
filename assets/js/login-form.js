@@ -2,11 +2,14 @@
 
 import Button from '../components/button.js';
 import Input from '../components/input.js';
+import AppText from './appText.js';
 import User from './user.js';
 
 export default class LoginForm extends HTMLElement {
   constructor(){
     super();
+
+    this.appText = new AppText();
 
     // show sign in form by default
     this.isSignIn = true;
@@ -22,16 +25,16 @@ export default class LoginForm extends HTMLElement {
     formTab.className = 'sign-up-form login-form-wrapper';
     const tabWrapper = document.createElement('div');
     tabWrapper.className = 'tab-wrapper';
-    const signUpBtn = new Button('Sign up', 'button', 'btn disabled');
+    const signUpBtn = new Button(this.appText.string.signUp, 'button', 'btn disabled');
     signUpBtn.setAttribute('disabled', '');
-    const signInBtn = new Button('Sign in', 'button', 'btn ');
+    const signInBtn = new Button(this.appText.string.signIn, 'button', 'btn ');
     const inputWrapper = document.createElement('div');
     inputWrapper.className = 'input-wrapper';
-    const userNameInput = new Input('text', 'username', '', 'Username');
-    const passwordInput = new Input('password', 'password', '', 'Password');
+    const userNameInput = new Input('text', 'username', '', this.appText.string.userName);
+    const passwordInput = new Input('password', 'password', '', this.appText.string.password);
     const ctaWrapper = document.createElement('div');
     ctaWrapper.className = 'cta-wrapper';
-    const registerBtn = new Button('Register', 'button', 'btn-secondary rounded');
+    const registerBtn = new Button(this.appText.string.register, 'button', 'btn-secondary rounded');
 
     // show sign in form
     signInBtn.addEventListener('click', () => {
@@ -49,7 +52,7 @@ export default class LoginForm extends HTMLElement {
         if(isSuccess){
           formTab.submit();
         }else{
-          alert('Username is already taken or exists.');
+          alert(this.appText.string.userExistMsg);
         }
       }
     });
@@ -70,16 +73,16 @@ export default class LoginForm extends HTMLElement {
     formTab.className = 'sign-in-form login-form-wrapper';
     const tabWrapper = document.createElement('div');
     tabWrapper.className = 'tab-wrapper';
-    const signUpBtn = new Button('Sign up', 'button', 'btn');
-    const signInBtn = new Button('Sign in', 'button', 'btn disabled');
+    const signUpBtn = new Button(this.appText.string.signUp, 'button', 'btn');
+    const signInBtn = new Button(this.appText.string.signIn, 'button', 'btn disabled');
     signInBtn.setAttribute('disabled', '');
     const inputWrapper = document.createElement('div');
     inputWrapper.className = 'input-wrapper';
-    const userNameInput = new Input('text', 'username', '', 'Username');
-    const passwordInput = new Input('password', 'password', '', 'Password');
+    const userNameInput = new Input('text', 'username', '', this.appText.string.userName);
+    const passwordInput = new Input('password', 'password', '', this.appText.string.password);
     const ctaWrapper = document.createElement('div');
     ctaWrapper.className = 'cta-wrapper';
-    const loginBtn = new Button('Login', 'button', 'btn-secondary rounded');
+    const loginBtn = new Button(this.appText.string.login, 'button', 'btn-secondary rounded');
 
     // show sign up form
     signUpBtn.addEventListener('click', () => {
@@ -97,7 +100,7 @@ export default class LoginForm extends HTMLElement {
         if(isSuccess){
           formTab.submit();
         }else{
-          alert('Incorrect username or password.');
+          alert(this.appText.string.incorrectPasswordMsg);
         }
       }
     }));

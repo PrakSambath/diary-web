@@ -1,10 +1,13 @@
 'use strict';
 
+import AppText from "./appText.js";
+
 export default class AppName extends HTMLElement {
   constructor(){
     super();
-    const APP_NAME = 'Diary Application';
-    const header = `<span class="app-name">${APP_NAME}</span>`;
+    const appText = new AppText();
+    // const APP_NAME = 'Diary Application';
+    const header = `<span class="app-name">${appText.string.appName}</span>`;
     this.innerHTML = header;
   }
 }
