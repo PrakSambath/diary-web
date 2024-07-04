@@ -1,6 +1,8 @@
-import Button from "../components/button.js";
-import Input from "../components/input.js";
-import Textarea from "../components/textarea.js";
+'use strict';
+
+import Button from '../components/button.js';
+import Input from '../components/input.js';
+import Textarea from '../components/textarea.js';
 
 export default class Entry{
 
@@ -13,34 +15,33 @@ export default class Entry{
     wrapper.style.backgroundColor = themeColor;
 
     // view layout
-    const viewElem = document.createElement('div');
-    viewElem.innerHTML =`
+    const viewLayout = document.createElement('form');
+    viewLayout.innerHTML =`
       <div class="wrapper">
       <div class="text-content">
         <h2 class="title">${title}</h2>
         <p class="content">${content}</p>
-        <div class="date">
-          <span>${date}</span>
-        </div>
+        <span class="date">${date}</span>
       </div>
       <div class="cta-link">
-        <button type="button" class="edit-btn btn-secondary rounded">Edit</button>
-        <button type="button" class="delete-btn btn-secondary rounded">Delete</button>
       </div>
       </div>
       `;
+    const editBtn = new Button('Edit', 'button', 'btn-secondary rounded');
+    const delBtn = new Button('Delete', 'button', 'btn-secondary rounded');
+    viewLayout.querySelector('.cta-link').append(editBtn, delBtn);
 
     // show edit layout
-    viewElem.querySelector('.edit-btn').addEventListener('click', () => {
+    editBtn.addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
-        viewElem.style.display = 'none';
-        editElem.style.display = 'block';
+        viewLayout.style.display = 'none';
+        editLayout.style.display = 'block';
         wrapper.style.transform = '';
       },ANIMATE_DURATION);
     });
     // delete diary
-    viewElem.querySelector('.delete-btn').addEventListener('click', () => {
+    delBtn.addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
         onDelete(id);
@@ -50,41 +51,36 @@ export default class Entry{
     });
 
     // edit layout
-    const editElem = document.createElement('form');
+    const editLayout = document.createElement('form');
+    editLayout.innerHTML = `
+    <div class="wrapper">
+    <div class="text-content">
+    </div>
+    <div class="cta-link">
+    </div>
+    </div>
+    `;
     const inputTitle = new Input('text', 'title', 'title');
     inputTitle.value = title;
     const inputContent = new Textarea('content', 'content');
     inputContent.value = content;
     const inputDate = new Input('date', 'date', 'date');
     inputDate.value = date;
-    editElem.innerHTML = `
-    <div class="wrapper">
-      <div class="text-content">
-        <input type="text" class="title" name="title"/>
-        <textarea class="content" name="content"></textarea>
-        <div>
-          <input type="date" class="date" name="date"/>
-        </div>
-      </div>
-      <div class="cta-link">
-        <button type="button" class="update-btn btn-secondary rounded">Update</button>
-        <button type="button" class="cancel-btn btn-secondary rounded">Cancel</button>
-      </div>
-      </div>
-      `;
-      editElem.querySelector('.title').replaceWith(inputTitle);
-      editElem.querySelector('.content').replaceWith(inputContent);
-      editElem.querySelector('.date').replaceWith(inputDate);
+    const updateBtn = new Button('Update', 'button', 'btn-secondary rounded');
+    const cancelBtn = new Button('Cancel', 'button', 'btn-secondary rounded');
+    editLayout.querySelector('.text-content').append(inputTitle, inputContent, inputDate);
+    editLayout.querySelector('.cta-link').append(updateBtn, cancelBtn);
+
     // update diary
-    editElem.querySelector('.update-btn').addEventListener('click', () => {
+    updateBtn.addEventListener('click', () => {
       const newTitle = inputTitle.getValue();
       const newContent = inputContent.getValue();
       const newDate = inputDate.getValue();
       if(newTitle && newContent && newDate){
         wrapper.style.transform = 'rotateY(90deg)';
         setTimeout(() => {
-          editElem.style.display = 'none';
-          viewElem.style.display = 'block';
+          editLayout.style.display = 'none';
+          viewLayout.style.display = 'block';
           wrapper.style.transform = '';
           onUpdate(id, newTitle, newContent, newDate, themeColor);
           // reload browser to update view
@@ -93,20 +89,20 @@ export default class Entry{
       }
     });
     // close edit layout
-    editElem.querySelector('.cancel-btn').addEventListener('click', () => {
+    cancelBtn.addEventListener('click', () => {
       wrapper.style.transform = 'rotateY(90deg)';
       setTimeout(() => {
-        editElem.style.display = 'none';
-        viewElem.style.display = 'block';
+        editLayout.style.display = 'none';
+        viewLayout.style.display = 'block';
         wrapper.style.transform = '';
       },ANIMATE_DURATION);
     });
 
     // hide edit layout by default
-    editElem.style.display = 'none';
+    editLayout.style.display = 'none';
 
     // return view
-    wrapper.append(viewElem, editElem);
+    wrapper.append(viewLayout, editLayout);
     return wrapper;
   }
 }

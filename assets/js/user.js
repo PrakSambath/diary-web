@@ -1,4 +1,6 @@
-import {loadData, saveData} from "./crud.js";
+'use strict';
+
+import {loadData, saveData} from './crud.js';
 
 const ACCOUNT = 'accounts';
 const LOGIN = 'login';
@@ -22,8 +24,8 @@ export default class User {
     return this.loggedin;
   }
 
+  // login user
   login(userName, password){
-    // login user
     let accounts = loadData(ACCOUNT);
     let isSuccess = false;
     if(accounts != null){
@@ -40,8 +42,8 @@ export default class User {
     return isSuccess;
   }
 
+  // register new user
   register(userName, password){
-    // register new user
     let accounts = loadData(ACCOUNT);
     if(accounts == null){
       accounts = [];
@@ -69,8 +71,8 @@ export default class User {
     return false;
   }
 
+  // logout user
   logout() {
-    // logout user
     // clear login data
     saveData(LOGIN, {});
     this.loggedin = false;

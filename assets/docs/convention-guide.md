@@ -108,8 +108,8 @@
 
      <!-- Bad -->
      <section>
-       <p>This is a paragraph.<p>
-       <p>This is another paragraph.<p>
+       <p>This is a paragraph.
+       <p>This is another paragraph.
      </section>
      ```
 
@@ -127,7 +127,7 @@
 
 5. **Always Quote Attribute Values**:
 
-   - Always quote attribute values, especially if they contain spaces:
+   - Always using double quotes around attribute values, especially if they contain spaces:
 
      ```html
      <!-- Good -->
@@ -242,35 +242,14 @@
      }
      ```
 
-2. **Color**
-
-   ```css
-   ```
-
-3. **Font family**
-
-   ```css
-   font-family: "Roboto", "sans-serif";
-   ```
-
-4. **Font size**
-   ```css
-   .fs-1: 0.75rem;
-   .fs-2: 0.875rem;
-   .fs-3: 1rem;
-   .fs-4: 1.25rem;
-   .fs-5: 1.5rem;
-   .fs-6: 2rem;
-   .fs-7: 3rem;
-   .fs-8: 4rem;
-   .fs-9: 5rem;
-   .fs-10: 6rem;
-   ```
-
-5. **Grid System**
+2. **Grid System**
 
 ```css
 /* desktop: 12 columns*/
+.container {
+  margin-left: 64px;
+  margin-right: 64px;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -278,31 +257,105 @@
 }
 
 /* tablet: 8 columns*/
+.container {
+  margin-left: 64px;
+  margin-right: 64px;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-gap: 16px;
+  grid-gap: 32px;
 }
 
 /* mobile: 4 columns*/
+.container {
+  margin-left: 16px;
+  margin-right: 16px;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 16px;
+  grid-gap: 24px;
 }
 ```
 
-6. **Element Box**
-```css
-.pt for padding top
-.pb for padding bottom
-.px for padding left and right
-.py for padding top and bottom
+3. **Color**
 
-.mt for margin top
-.mb for margin bottom
-.mx for margin left and right
-.my for margin top and bottom
+   ```css
+    --clr-primary-light: #CAF4FF;
+    --clr-primary-normal: #6BCCFF;
+    --clr-primary-dark: #1781DD;
+    --clr-secondary-light: #FFF4A8;
+    --clr-secondary-normal: #F6DC5A;
+    --clr-secondary-dark: #C8AA19;
+    --clr-tertiary-light: #9EEAE3;
+    --clr-tertiary-light: #4AD9CB;
+    --clr-tertiary-light: #1B7E75;
+    --clr-light-900: #FAFAFA;
+    --clr-light-700: #C6D0D9;
+    --clr-light-500: #7B8288;
+    --clr-light-300: #3E4F5D;
+    --clr-light-100: #223444;
+   ```
+
+4. **Font family**
+
+   ```css
+   font-family: Arial, Helvetica, "Hanuman", sans-serif;
+   ```
+
+5. **Font size**
+
+   ```css
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+   ```
+
+6. **Padding**
+
+```css
+  --padding: 16px;
+  --padding-y: 16px;
+  --padding-x: 16px;
+  --card-padding: 16px;
+  --button-padding: 10px 16px;
+  --button-padding-x: 16px;
+  --button-padding-y: 10px;
+  --section-padding: 64px;
+  --section-padding-x: 64px;
+  --section-padding-y: 64px;
+```
+
+7. **Margin**
+
+```css
+  --margin: 16px;
+  --margin-x: 16px;
+  --margin-y: 16px;
+  --section-margin: 64px;
+  --section-margin-x: 64px;
+  --section-margin-y: 64px;
+```
+
+8. **Gap**
+
+```css
+  --gap: 16px;
+  --grid-gap: 32px;
+```
+
+9. **Radius**
+
+```css
+  --card-border-radius: 12px;
+  --button-border-radius: 100px;
+```
+
+10. **Transition**
+
+```css
+  --transition: all 200ms ease-in-out;
 ```
 
 ## 6. Javascript
@@ -313,8 +366,8 @@
    - All names should start with a letter.
    - Examples:
      ```javascript
-     let firstName = "John";
-     let lastName = "Doe";
+     let firstName = 'John';
+     let lastName = 'Doe';
      const price = 19.9;
      const tax = 0.2;
      const fullPrice = price + price * tax;
@@ -326,7 +379,7 @@
    - Examples:
      ```javascript
      let x = y + z;
-     const myArray = ["Volvo", "Saab", "Fiat"];
+     const myArray = ['Volvo', 'Saab', 'Fiat'];
      ```
 
 3. **Code Indentation**:
@@ -350,12 +403,16 @@
      - Do not end a complex statement with a semicolon.
      - Examples:
        ```javascript
-       const cars = ["Volvo", "Saab", "Fiat"];
+       const cars = [
+          'Volvo',
+           'Saab',
+            'Fiat'
+        ];
        const person = {
-         firstName: "John",
-         lastName: "Doe",
+         firstName: 'John',
+         lastName: 'Doe',
          age: 50,
-         eyeColor: "blue",
+         eyeColor: 'blue',
        };
        ```
 
@@ -363,16 +420,16 @@
 
    - Place the opening bracket on the same line as the object name.
    - Use a colon plus one space between each property and its value.
-   - Use quotes around string values (not around numeric values).
+   - Use single quote around string values (not around numeric values).
    - Do not add a comma after the last property-value pair.
    - Always end an object definition with a semicolon.
    - Example:
      ```javascript
      const person = {
-       firstName: "John",
-       lastName: "Doe",
+       firstName: 'John',
+       lastName: 'Doe',
        age: 50,
-       eyeColor: "blue",
+       eyeColor: 'blue',
      };
      ```
 
@@ -380,20 +437,44 @@
    - For readability, avoid lines longer than **80 characters**.
    - If a JavaScript statement doesn't fit on one line, break it after an operator or a comma.
 
+## 8. Comment Notation
+
+- Use only single line comments in css and javascript to demonstrate the purpose of style and function. 
+Ex:
+``` css
+ 	/*---------- common h1 size ----------*/
+	.h1{
+    ...
+	}
+  /*---------- function return sum----------*/
+  function sum(){
+    ...
+  }
+```
+
+- Use 2 lines comment in html to demonstrate the purpose of section 
+Ex:  
+```html
+<!------------ start navigation bar section ------------>
+			 Code here
+<!---------- end of navigation bar section------------->
+```
+
+
 ## 7. Injecting Common Components
 
 put `<link rel="stylesheet" href="">` in the head tag
 put `<script type="module" src="">` right above the closing of body tag
 
-in the body tag section
+Using component in html
 ```html
 <!-- common component -->
 <component-name></component-name>
 ```
 
-in the script file
+Importing component in javascript
 ```javascript
-import {Component} from "path"
+import {Component} from "path";
 
 const myComponent = new Component();
 ``

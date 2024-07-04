@@ -1,6 +1,8 @@
-import Button from "../components/button.js";
-import CRUD from "./crud.js";
-import User from "./user.js";
+'use strict';
+
+import Button from '../components/button.js';
+import CRUD from './crud.js';
+import User from './user.js';
 
 export default class UserProfile extends HTMLElement {
   constructor(){
@@ -19,7 +21,7 @@ export default class UserProfile extends HTMLElement {
       });
       
       // user dashboard
-      const dashboard = document.createElement('div');
+      const dashboard = document.createElement('sidebar');
       dashboard.className = 'user-dashboard hidden';
       const userInfo = document.createElement('div');
       userInfo.className = 'user-info';

@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Textarea {
   constructor(name = '', className = '', placeholder = ''){
     const textarea = document.createElement('textarea');

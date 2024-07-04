@@ -36,20 +36,26 @@
   --section-padding: 64px;
   --section-padding-x: 64px;
   --section-padding-y: 64px;
-  --section-margin: 64px;
-  --section-margin-x: 64px;
-  --section-margin-y: 64px;
-  --gap: 16px;
-  --grid-gap: 32px;
+
   --margin: 16px;
   --margin-x: 16px;
   --margin-y: 16px;
+  --section-margin: 64px;
+  --section-margin-x: 64px;
+  --section-margin-y: 64px;
+
+  --gap: 16px;
+  --grid-gap: 32px;
+
   --card-border-radius: 12px;
   --button-border-radius: 100px;
+  
+  --transition: all 200ms ease-in-out;
+
+  --font-family: Arial, Helvetica, "Hanuman", sans-serif;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.25rem;
-  --transition: all 200ms ease-in-out;
 }
 
 /* Card Style */

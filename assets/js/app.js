@@ -1,7 +1,9 @@
-import EntryContainer from "./entry-container.js";
-import InputForm from "./input-form.js";
-import LoginForm from "./login-form.js";
-import User from "./user.js";
+'use strict';
+
+import EntryContainer from './entry-container.js';
+import InputForm from './input-form.js';
+import LoginForm from './login-form.js';
+import User from './user.js';
 
 export default class App extends HTMLElement {
   constructor(){
@@ -22,4 +24,3 @@ export default class App extends HTMLElement {
 }
 
 window.customElements.define('app-content', App);
-
