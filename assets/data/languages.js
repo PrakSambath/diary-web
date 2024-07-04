@@ -22,7 +22,7 @@ export default {
                     emptyListPlaceholderText: 'Click on the plus icon to create a new list'
                   },
                   kh: {
-                    appName: 'កំណត់ហេតុ',
+                    appName: 'Diary Application',
                     appCredit: 'អ្នកអភិវឌ្ឍកម្មវិធី: ប្រាក់ សម្បត្តិ',
                     user: 'អ្នកប្រើ',
                     signIn: 'ចូល',
