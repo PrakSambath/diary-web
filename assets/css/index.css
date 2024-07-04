@@ -297,8 +297,9 @@ entry-container {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
+  min-width: 360px;
+  max-width: 460px;
 }
 
 .sign-in-form {
@@ -308,8 +309,9 @@ entry-container {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
+  min-width: 360px;
+  max-width: 460px;
 }
 
 .login-form .tab-wrapper {
@@ -333,6 +335,7 @@ entry-container {
   flex-direction: column;
   gap: var(--gap);
   padding: 0 var(--padding-x);
+  margin-top: var(--margin-y);
 }
 
 .login-form input {
