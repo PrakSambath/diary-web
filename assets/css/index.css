@@ -58,7 +58,7 @@ header .container {
   align-items: flex-end;
   flex-direction: column;
   height: 40px;
-  width: 56px;
+  width: 76px;
 }
 
 .user-profile .user-btn {
@@ -69,7 +69,6 @@ header .container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* justify-content: center; */
   gap: var(--gap);
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
