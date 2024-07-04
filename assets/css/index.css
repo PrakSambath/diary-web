@@ -113,6 +113,7 @@ main .container {
   .form-container {
     grid-column: 1 / span 4;
   }
+
   .login-form-wrapper {
     grid-column: 1 / span 4;
   }
@@ -290,28 +291,13 @@ entry-container {
   padding-top: var(--section-padding-y);
 }
 
-.sign-up-form {
+.sign-up-form, .sign-in-form {
   background-color: var(--form-background);
   border-radius: var(--card-border-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
-  margin: auto;
-  min-width: 360px;
-  max-width: 460px;
-}
-
-.sign-in-form {
-  background-color: var(--form-background);
-  border-radius: var(--card-border-radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
-  margin: auto;
-  min-width: 360px;
-  max-width: 460px;
 }
 
 .login-form .tab-wrapper {
